@@ -1,0 +1,33 @@
+<html>
+<title> 
+hi
+</title>
+<body>
+
+<form action = "createaccount.php" method="get">
+    <h1> Please enter your information to create a new login account</h1>
+    <p>  
+        <label>Login Name:</label><input type = "text"  name = "name" />
+        <label>Password:</label><input type = "password" name = "pwd" />
+        <br/><br/>
+    </p>
+    <input type = "submit"  id = "submit" value = "submit"/>
+    <input type = "reset"  id = "reset" value = "reset"/>
+</form>
+<script>
+<?php
+    $username = $_GET['name'];
+    $password = $_GET['pwd'];
+    $filename = 'accounts.txt';
+    $fp = fopen($filename, 'a+');
+    fwrite ($fp, $username . "," . $password . "\n");
+    $fclose ($fp);
+    echo ("account created");
+    header("Location: "login.html"); 
+    die();
+?>
+</script>
+</body>
+
+
+<html>
